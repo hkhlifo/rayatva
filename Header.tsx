@@ -18,7 +18,7 @@ export default function Header() {
     <>
       <header className={solid || sc ? "on" : ""}>
         <div className="nav">
-          <Link className="logo" href="/"><span className="mark">Y</span>YourBrand</Link>
+          <Link className="logo" href="/"><span className="mark">Y</span>Rayatva</Link>
           <div className="nr">
             {user ? <Link className="lnk" href="/dashboard">Dashboard</Link>
               : <a className="lnk lg" href="#" onClick={(e) => { e.preventDefault(); openAuth(); }}>Log In</a>}
