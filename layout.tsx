@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const tight = Inter_Tight({ subsets: ["latin"], weight: ["700", "800"], variable: "--font-tight" });
 
 export const metadata: Metadata = {
-  title: "YourBrand – Courses, Live Yoga & Business Growth",
+  title: "Rayatva - Courses, Live Yoga & Business Growth",
   description: "Certified courses, live yoga classes, brand marketing and websites for businesses.",
 };
 
