@@ -31,9 +31,9 @@ const STATS = [
 ];
 
 const CONTACT_INFO = [
-  { icon: "📍", label: "Address", value: "Your street, Your city, State, PIN" },
-  { icon: "📞", label: "Phone", value: "+91 00000 00000" },
-  { icon: "✉️", label: "Email", value: "hello@yourbrand.com" },
+  { icon: "📍", label: "Address", value: "Sector 22, Chandigarh, India" },
+  { icon: "📞", label: "Phone", value: "+91 98765 43210" },
+  { icon: "✉️", label: "Email", value: "hello@rayatva.in" },
   { icon: "🕘", label: "Hours", value: "Mon–Sat, 9 am – 7 pm" },
 ];
 
@@ -213,7 +213,8 @@ export function Location() {
         <div className="map">
           <div>
             <div style={{ fontSize: "2.4rem" }}>📍</div>
-            Paste your Google Maps embed here
+            Rayatva Studio<br />
+            Chandigarh, India
           </div>
         </div>
       </div>
