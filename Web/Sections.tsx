@@ -1,5 +1,8 @@
 
+"use client";
+
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 import { FAQS, REVIEWS } from "@/lib/data";
 
 const STEPS = [
@@ -24,11 +27,47 @@ const STEPS = [
 ];
 
 const STATS = [
-  { value: "5,000+", label: "Learners" },
-  { value: "15+", label: "Courses" },
-  { value: "120+", label: "Business clients" },
-  { value: "98%", label: "Would recommend us" },
+  { value: 5000, suffix: "+", label: "Learners" },
+  { value: 15, suffix: "+", label: "Courses" },
+  { value: 120, suffix: "+", label: "Business clients" },
+  { value: 98, suffix: "%", label: "Would recommend us" },
 ];
+
+function AnimatedCounter({ value, suffix }: { value: number; suffix: string }) {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    let frame = 0;
+    let start: number | null = null;
+    const duration = 1400;
+
+    const tick = (timestamp: number) => {
+      if (start === null) start = timestamp;
+      const progress = Math.min((timestamp - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 4);
+      setCount(Math.round(value * eased));
+
+      if (progress < 1) {
+        frame = requestAnimationFrame(tick);
+      }
+    };
+
+    frame = requestAnimationFrame(tick);
+
+    return () => cancelAnimationFrame(frame);
+  }, [value]);
+
+  const formattedValue = new Intl.NumberFormat("en-US", {
+    maximumFractionDigits: 0,
+  }).format(count);
+
+  return (
+    <b aria-label={`${value}${suffix}`}>
+      <span>{formattedValue}</span>
+      {suffix}
+    </b>
+  );
+}
 
 const CONTACT_INFO = [
   { icon: "📍", label: "Address", value: "Sector 22, Chandigarh, India" },
@@ -91,7 +130,7 @@ export function Stats() {
       <div className="w">
         {STATS.map((stat) => (
           <div key={stat.label}>
-            <b>{stat.value}</b>
+            <AnimatedCounter value={stat.value} suffix={stat.suffix} />
             <span>{stat.label}</span>
           </div>
         ))}

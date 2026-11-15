@@ -70,7 +70,3 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   );
 }
-
-// filepath: c:\Users\anvit\OneDrive\Desktop\Clients\Rayatva\Web\global.d.ts
-declare module "*.css";
-declare module "*.scss";
