@@ -1,71 +1,28 @@
-import type { Metadata, Viewport } from "next";
-import { Inter, Inter_Tight } from "next/font/google";
-import AppProvider from "../AppProvider";
-import Header from "../Header";
-import Footer from "../Footer";
-import { AuthModal, BookingModal } from "../Modals";
+import type { Metadata } from "next";
+import Navbar from "./components/Navbar";
 import "./globals.css";
+import { Plus_Jakarta_Sans } from 'next/font/google';
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const tight = Inter_Tight({ subsets: ["latin"], weight: ["700", "800"], variable: "--font-tight" });
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  variable: '--font-plus-jakarta',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://rayatva.in"),
-  title: {
-    default: "Rayatva | Courses, Yoga & Growth Studio",
-    template: "%s | Rayatva",
-  },
-  description:
-    "Certified courses, live yoga classes, brand strategy and custom websites for ambitious businesses.",
-  applicationName: "Rayatva",
-  keywords: [
-    "Rayatva",
-    "courses",
-    "live yoga",
-    "brand strategy",
-    "website design",
-    "digital marketing",
-    "business growth",
-  ],
-  openGraph: {
-    title: "Rayatva | Courses, Yoga & Growth Studio",
-    description:
-      "Learn practical skills, move through live yoga sessions, and build a stronger brand with Rayatva.",
-    url: "https://rayatva.in",
-    siteName: "Rayatva",
-    locale: "en_IN",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Rayatva | Courses, Yoga & Growth Studio",
-    description:
-      "Learn practical skills, move through live yoga sessions, and build a stronger brand with Rayatva.",
-  },
-  icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
-    apple: "/favicon.svg",
-  },
+  title: "RAYATVA - Multi-Dimensional Growth Company",
+  description: "RAYATVA is a multi-dimensional growth company. We transform business ideas into powerful brands, empower individuals through entrepreneurship and skill-based education, and inspire growth through success-oriented learning. We also focus on health, wellness and lifestyle education, creating new skills, opportunities and pathways to success.",
 };
 
-export const viewport: Viewport = {
-  themeColor: "#0a0812",
-  width: "device-width",
-  initialScale: 1,
-};
-
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en">
-      <body className={`${inter.variable} ${tight.variable}`}>
-        <AppProvider>
-          <Header />
-          {children}
-          <Footer />
-          <AuthModal />
-          <BookingModal />
-        </AppProvider>
+    <html
+      lang="en"
+      className={`${plusJakartaSans.variable} h-full antialiased`}
+    >
+      <body className="min-h-full flex flex-col">
+        <Navbar />
+        {children}
       </body>
     </html>
   );
